@@ -44,7 +44,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT;
-
+const FRONTEND_URL = process.env.FRONTEND_URL;
 const server = app.listen(
   PORT,
   console.log(`Server running on PORT ${PORT}...`.yellow.bold)
@@ -53,7 +53,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chitchat-mern.onrender.com",
+    origin: `${FRONTEND_URL}`,
     // credentials: true,
   },
 });
